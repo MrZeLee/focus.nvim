@@ -54,6 +54,11 @@ function M.autoresize(config)
         width = config.autoresize.width
     else
         width = golden_ratio_width()
+        if config.autoresize.focusedwindow_minwidth > 0 then
+            if width < config.autoresize.focusedwindow_minwidth then
+                width = config.autoresize.focusedwindow_minwidth
+            end
+        end
         if config.autoresize.minwidth > 0 then
             width = math.max(width, config.autoresize.minwidth)
         elseif width < golden_ratio_minwidth() then
@@ -66,6 +71,11 @@ function M.autoresize(config)
         height = config.autoresize.height
     else
         height = golden_ratio_height()
+        if config.autoresize.focusedwindow_minheight > 0 then
+            if height < config.autoresize.focusedwindow_minheight then
+                height = config.autoresize.focusedwindow_minheight
+            end
+        end
         if config.autoresize.minheight > 0 then
             height = math.max(height, config.autoresize.minheight)
         elseif height < golden_ratio_minheight() then
